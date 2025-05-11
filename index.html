@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Menu Makanan & Minuman</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-orange-50 font-sans text-gray-800">
+  <!-- Tombol Lokasi Kami -->
+  <div class="fixed top-5 left-5 z-50">
+    <a href="https://www.google.com/maps?q=Jln+Lalu+Mustiadi+No+32+Sepit+Depan+MTs+NW+Sepit" target="_blank"
+       class="flex items-center gap-2 bg-white text-orange-700 px-4 py-2 rounded-full shadow-md hover:bg-orange-100 transition-all duration-300 ease-in-out transform hover:scale-105">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-red-500 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M12 11c1.104 0 2-.896 2-2s-.896-2-2-2-2 .896-2 2 .896 2 2 2zm0 0c0 3-3 5-3 8h6c0-3-3-5-3-8zm0-9C6.477 2 2 6.477 2 12c0 5.136 3.798 9.379 8.75 9.954A1 1 0 0012 21c5.523 0 10-4.477 10-10S17.523 2 12 2z"/>
+      </svg>
+      <span class="font-semibold text-sm">Lokasi Kami</span>
+    </a>
+  </div>
+
+  <!-- Header -->
+  <header class="bg-[#FFA726] text-white text-center py-4 shadow-md relative">
+    <h1 class="text-2xl font-bold">Menu Makanan & Minuman Kondok Food</h1>
+  </header>
+
+  <!-- Tombol Keranjang -->
+  <button id="cart-btn" class="fixed top-5 right-5 z-50 flex items-center gap-2 bg-white text-orange-700 px-4 py-2 rounded-full shadow-md hover:bg-orange-100 transition-all duration-300 ease-in-out transform hover:scale-105">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-green-600 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-1.35 6.75A1 1 0 007 21h10a1 1 0 001-1l-1.35-6.75M10 21a1 1 0 102 0 1 1 0 00-2 0zm6 0a1 1 0 102 0 1 1 0 00-2 0z" />
+    </svg>
+    <span class="text-sm font-semibold">
+      <span id="cart-count">0</span> | Rp <span id="cart-total">0</span>
+    </span>
+  </button>
+
+
+  <!-- Makanan -->
+  <section class="p-6">
+    <h2 class="text-center text-xl font-semibold mb-4 text-red-500">Menu Makanan</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+      <!-- Item makanan -->
+      <!-- Tambahkan 7 menu lainnya seperti ini -->
+       <div class="bg-white rounded-xl shadow-md overflow-hidden">
+  <img src="nasi-goreng.jpg" class="w-full h-40 object-cover" />
+  <div class="p-3 text-center">
+    <h4 class="font-semibold">Nasi Goreng</h4>
+    <p class="text-sm text-gray-500">Rp 15000</p>
+    
+    <!-- Level Pedas -->
+    <select id="spicy-nasi-goreng" class="mt-2 w-full border border-gray-300 rounded text-sm">
+      <option value="Tidak Pedas"> Tidak Pedas</option>
+      <option value="Sedang"> Sedang</option>
+      <option value="Pedas">Pedas</option>
+      <option value="Super Pedas"> Super Pedas</option>
+    </select>
+
+    <!-- Jumlah -->
+    <input id="qty-nasi-goreng" type="number" min="1" value="1" class="mt-2 w-full border rounded text-center text-sm" />
+
+    <!-- Tombol Tambah -->
+    <button onclick="addToCart('Nasi Goreng', 15000, 'spicy-nasi-goreng', 'qty-nasi-goreng')" class="mt-2 bg-green-500 text-white px-3 py-1 rounded">Tambah</button>
+  </div>
+</div>
+      <div class="bg-white rounded-xl shadow-md overflow-hidden">
+        <img src="mie-goreng.jpg" class="w-full h-40 object-cover" />
+        <div class="p-3 text-center">
+          <h4 class="font-semibold">Mie Goreng</h4>
+          <p class="text-sm text-gray-500">Rp 12000</p>
+          <!-- Level Pedas -->
+    <select id="spicy-mie-goreng" class="mt-2 w-full border border-gray-300 rounded text-sm">
+      <option value="Tidak Pedas"> Tidak Pedas</option>
+      <option value="Sedang"> Sedang</option>
+      <option value="Pedas">Pedas</option>
+      <option value="Super Pedas"> Super Pedas</option>
+    </select>
+
+    <!-- Jumlah -->
+    <input id="qty-mie-goreng" type="number" min="1" value="1" class="mt-2 w-full border rounded text-center text-sm" />
+
+    <!-- Tombol Tambah -->
+    <button onclick="addToCart('Mie Goreng', 15000, 'spicy-mie-goreng', 'qty-mie-goreng')" class="mt-2 bg-green-500 text-white px-3 py-1 rounded">Tambah</button>
+  </div>
+</div>
+      <div class="bg-white rounded-xl shadow-md overflow-hidden">
+        <img src="ayam-bakar.jpg" class="w-full h-40 object-cover" />
+        <div class="p-3 text-center">
+          <h4 class="font-semibold">Ayam Bakar</h4>
+          <p class="text-sm text-gray-500">Rp 20.000</p>
+         <!-- Level Pedas -->
+    <select id="spicy-ayam-bakar" class="mt-2 w-full border border-gray-300 rounded text-sm">
+      <option value="Tidak Pedas"> Tidak Pedas</option>
+      <option value="Sedang"> Sedang</option>
+      <option value="Pedas">Pedas</option>
+      <option value="Super Pedas"> Super Pedas</option>
+    </select>
+
+    <!-- Jumlah -->
+    <input id="qty-ayam-bakar" type="number" min="1" value="1" class="mt-2 w-full border rounded text-center text-sm" />
+
+    <!-- Tombol Tambah -->
+    <button onclick="addToCart('Ayam Bakar', 15000, 'spicy-ayam-bakar', 'qty-ayam-bakar')" class="mt-2 bg-green-500 text-white px-3 py-1 rounded">Tambah</button>
+  </div>
+</div>
+      <div class="bg-white rounded-xl shadow-md overflow-hidden">
+        <img src="bakso.jpg" class="w-full h-40 object-cover" />
+        <div class="p-3 text-center">
+          <h4 class="font-semibold">Bakso</h4>
+          <p class="text-sm text-gray-500">Rp 20.000</p>
+         <!-- Level Pedas -->
+    <select id="spicy-bakso" class="mt-2 w-full border border-gray-300 rounded text-sm">
+      <option value="Tidak Pedas"> Tidak Pedas</option>
+      <option value="Sedang"> Sedang</option>
+      <option value="Pedas">Pedas</option>
+      <option value="Super Pedas"> Super Pedas</option>
+    </select>
+
+    <!-- Jumlah -->
+    <input id="qty-bakso" type="number" min="1" value="1" class="mt-2 w-full border rounded text-center text-sm" />
+
+    <!-- Tombol Tambah -->
+    <button onclick="addToCart('Bakso', 12000, 'spicy-bakso', 'qty-bakso')" class="mt-2 bg-green-500 text-white px-3 py-1 rounded">Tambah</button>
+  </div>
+</div>
+    </div>
+  </section>
+
+  <!-- Minuman -->
+  <section class="p-6">
+    <h2 class="text-center text-xl font-semibold mb-4 text-red-500">Menu Minuman</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+      <!-- Item minuman -->
+      <div class="min-w-[200px] bg-white rounded-xl shadow-md">
+        <img src="es-teh-manis.jpg" class="w-full h-40 w-full" />
+        <div class="text-center p-2">
+          <h4 class="font-semibold">Es Teh</h4>
+          <p class="text-sm text-gray-500">Rp 5000</p>
+          <button onclick="addToCart('Es Teh', 5000)" class="mt-2 bg-green-500 text-white px-3 py-1 rounded">Tambah</button>
+        </div>
+      </div>
+      <div class="min-w-[200px] bg-white rounded-xl shadow-md">
+        <img src="jus-alpukat.jpg" class="w-full h-40 w-full" />
+        <div class="text-center p-2">
+          <h4 class="font-semibold">Jus Alpukat</h4>
+          <p class="text-sm text-gray-500">Rp 7000</p>
+          <button onclick="addToCart('Jus Alpukat', 7000)" class="mt-2 bg-green-500 text-white px-3 py-1 rounded">Tambah</button>
+        </div>
+      </div>
+      <div class="min-w-[200px] bg-white rounded-xl shadow-md">
+        <img src="kopi-susu.jpg" class="w-full h-40 w-full" />
+        <div class="text-center p-2">
+          <h4 class="font-semibold">Kopi Susu</h4>
+          <p class="text-sm text-gray-500">Rp 8000</p>
+          <button onclick="addToCart('Kopi Susu', 8000)" class="mt-2 bg-green-500 text-white px-3 py-1 rounded">Tambah</button>
+        </div>
+      </div>
+      <div class="min-w-[200px] bg-white rounded-xl shadow-md">
+        <img src="xtrajos.jpg" class="w-full h-40 w-full" />
+        <div class="text-center p-2">
+          <h4 class="font-semibold">Xtra Joss</h4>
+          <p class="text-sm text-gray-500">Rp 5000</p>
+          <button onclick="addToCart('Xtra Joss', 5000)" class="mt-2 bg-green-500 text-white px-3 py-1 rounded">Tambah</button>
+        </div>
+      </div>
+      
+      
+    </div>
+  </section>
+
+  <!-- Tombol COD dengan pesan otomatis -->
+<button onclick="window.open('https://wa.me/6281998832656?text=' + encodeURIComponent('Halo, saya ingin memesan makanan dan minuman dari website Anda.'), '_blank')" class="fixed bottom-5 right-5 bg-green-500 text-white px-5 py-3 rounded-full shadow-lg hover:bg-green-600">
+  Pesan COD
+</button>
+
+
+  <!-- Keranjang Popup -->
+  <div id="cart-popup" class="hidden fixed top-16 right-5 bg-white shadow-lg border w-80 rounded-lg z-50">
+    <div class="p-4">
+      <h3 class="text-lg font-semibold mb-2">Keranjang Belanja</h3>
+      <ul id="cart-items" class="text-sm mb-4"></ul>
+      <p class="font-medium">Total: Rp <span id="cart-popup-total">0</span></p>
+      <button onclick="checkout()" class="mt-3 w-full bg-orange-500 text-white py-2 rounded hover:bg-orange-600">Beli Sekarang</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-red-100 mt-10 py-6 text-center">
+    <p class="mb-2">Hubungi kami di WhatsApp: 
+      <a href="https://wa.me/+6281998832656" target="_blank" class="text-green-700 font-medium">+62 819-9883-2656</a>
+    </p>
+    <form onsubmit="kirimSaran(event)" class="flex flex-col items-center gap-3">
+      <label for="saran" class="font-medium">Kritik & Saran:</label>
+      <textarea id="saran" class="w-11/12 md:w-1/2 p-3 rounded-lg border border-gray-300" placeholder="Tulis saran Anda di sini..."></textarea>
+      <button type="submit" class="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600">Kirim</button>
+    </form>
+  </footer>
+
+  <!-- Script Keranjang -->
+  <script>
+    const cart = [];
+    const cartBtn = document.getElementById('cart-btn');
+    const cartPopup = document.getElementById('cart-popup');
+    const cartCount = document.getElementById('cart-count');
+    const cartTotal = document.getElementById('cart-total');
+    const cartPopupTotal = document.getElementById('cart-popup-total');
+    const cartItems = document.getElementById('cart-items');
+
+    cartBtn.addEventListener('click', () => {
+      cartPopup.classList.toggle('hidden');
+      renderCart();
+    });
+
+    function addToCart(name, price, spicyId = null, qtyId = null) {
+  const level = spicyId ? document.getElementById(spicyId).value : '';
+  const qty = qtyId ? parseInt(document.getElementById(qtyId).value) || 1 : 1;
+
+  const existing = cart.find(item => item.name === name && item.level === level);
+  if (existing) {
+    existing.qty += qty;
+  } else {
+    cart.push({ name, price, level, qty });
+  }
+  updateCartSummary();
+}
+
+    function updateCartSummary() {
+      let totalQty = 0;
+      let totalPrice = 0;
+      cart.forEach(item => {
+        totalQty += item.qty;
+        totalPrice += item.price * item.qty;
+      });
+      cartCount.textContent = totalQty;
+      cartTotal.textContent = totalPrice;
+    }
+
+    function renderCart() {
+  cartItems.innerHTML = '';
+  let total = 0;
+  cart.forEach(item => {
+    const li = document.createElement('li');
+    li.innerHTML = `
+      <div class="mb-2">
+        <strong>${item.name}</strong> <br>
+        Level: <span class="italic">${item.level || '-'}</span><br>
+        Jumlah: ${item.qty} x Rp ${item.price} = Rp ${item.qty * item.price}
+      </div>
+    `;
+    cartItems.appendChild(li);
+    total += item.price * item.qty;
+  });
+  cartPopupTotal.textContent = total;
+}
+
+    function checkout() {
+      if (cart.length === 0) {
+        alert("Keranjang kosong.");
+        return;
+      }
+      let pesan = "Halo, saya ingin memesan:\n";
+      cart.forEach(item => {
+        pesan += `- ${item.name} x ${item.qty} = Rp ${item.qty * item.price}\n`;
+      });
+      const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+      pesan += `\nTotal: Rp ${total}`;
+      const waURL = `https://wa.me/+6281998832656?text=${encodeURIComponent(pesan)}`;
+      window.open(waURL, '_blank');
+    }
+
+    function kirimSaran(e) {
+      e.preventDefault();
+      const saran = document.getElementById('saran').value;
+      if (!saran.trim()) {
+        alert("Kritik dan saran tidak boleh kosong.");
+      } else {
+        alert("Terima kasih atas masukannya!");
+        document.getElementById('saran').value = '';
+      }
+    }
+  </script>
+</body>
+</html>
